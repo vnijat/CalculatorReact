@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, StyleSheet, Text, Button} from 'react-native'   
+import {View, StyleSheet, Text, Button,TouchableOpacity} from 'react-native'   
 
 export default class Calc extends Component {
   constructor(){
@@ -18,9 +18,9 @@ return (
   <View style={styles.buttons}>
   <View style={styles.numbers}>
     <View style={styles.row}>
-      <Button title="0" />
-      <Button title="0" />
-      <Button title="0" />
+      <TouchableOpacity  style={styles.btn}><Text>0</Text></TouchableOpacity>
+      <TouchableOpacity  style={styles.btn}><Text>0</Text></TouchableOpacity>
+      <TouchableOpacity  style={styles.btn}><Text>0</Text></TouchableOpacity>
     </View>
     <View style={styles.row}>
     <Button title="0" />
@@ -54,6 +54,12 @@ const styles = StyleSheet.create({
 container: {
   flex:1
 },
+btn:{
+  flex:1,
+  alignItems:"stretch",
+  alignSelf:"stretch"
+}
+,
 resultText:{
   fontSize:30,
   color:'white'
