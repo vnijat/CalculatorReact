@@ -10,7 +10,7 @@ render() {
 return (
 <View style={styles.container}>
   <View style={styles.result}>
-<Text style = {styles.resultText}>1</Text>
+<Text style = {styles.resultText}>11x11</Text>
   </View>
   <View style={styles.calculation}>
   <Text style = {styles.calculationText}>121</Text>
@@ -56,8 +56,9 @@ container: {
 },
 btn:{
   flex:1,
-  alignItems:"stretch",
-  alignSelf:"stretch"
+  alignItems:"center",
+  alignSelf:"stretch",
+  justifyContent:"center"
 }
 ,
 resultText:{
