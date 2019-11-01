@@ -7,6 +7,23 @@ export default class Calc extends Component {
     this.state = {}
   }
 render() {
+let rows = []
+let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9,], [0, 0, "="]]
+for (let i = 0; i < 4; i++){
+let row  = []
+for (let j = 0; j < 3; j++){
+  row.push(<TouchableOpacity  style={styles.btn}><Text style={styles.btntext}>{nums[i][0]}</Text></TouchableOpacity>
+    )
+
+} 
+
+  rows.push(<View style={styles.row}>{row}</View>
+    )
+}
+let operations = ['+', '-', '*', '/']
+
+
+
 return (
 <View style={styles.container}>
   <View style={styles.result}>
@@ -17,26 +34,7 @@ return (
   </View>
   <View style={styles.buttons}>
   <View style={styles.numbers}>
-    <View style={styles.row}>
-      <TouchableOpacity  style={styles.btn}><Text>0</Text></TouchableOpacity>
-      <TouchableOpacity  style={styles.btn}><Text>0</Text></TouchableOpacity>
-      <TouchableOpacity  style={styles.btn}><Text>0</Text></TouchableOpacity>
-    </View>
-    <View style={styles.row}>
-    <Button title="0" />
-    <Button title="0" />
-    <Button title="0" />
-    </View>
-    <View style={styles.row}>
-    <Button title="0" />
-    <Button title="0" />
-    <Button title="0" />
-    </View>
-    <View style={styles.row}>
-    <Button title="0" />
-    <Button title="0" />
-    <Button title="0" />
-    </View>
+   {rows}
   </View>
   <View style={styles.operations}>
   <Button title="+" />
@@ -53,6 +51,9 @@ return (
 const styles = StyleSheet.create({
 container: {
   flex:1
+},
+btntext:{
+  fontSize:30 
 },
 btn:{
   flex:1,
