@@ -5,17 +5,69 @@ export default class Calc extends Component {
   constructor(){
     super()
     this.state = {
-      resultText:""
+      resultText:"",
+      calCtext: ""
     }
+    this.operations = ['Del','+', '-', '*', '/']
+
   }
 
-  buttonPressed(text){
 
+operate(operation){
+
+  switch(operation){
+case 'Del':
+  let text = this.state.resultText.split('')
+text.pop()
+this.setState({
+  resultText:text.join('')
+})
+break
+case '+':
+case '-':
+case '*':
+case '/':
+  const lastChar = this.state.resultText.split('').pop() 
+  if (this.operations.indexOf(lastChar) > 0) return
+
+if(this.state.text == "") return
+this.setState ({
+resultText: this.state.resultText + operation
+
+})
+
+  }
+}
+calculateResult() {
+  const text = this.state.resultText
+this.setState ({
+calCtext:eval(text)
+})
+} 
+validate(){
+  const text = this.state.resultText
+switch(text.slice(-1)){
+  case '+':
+  case '-':
+  case '*':
+  case '/':
+    return false
+}
+return true
+}
+
+  buttonPressed(text){
+if (text == '='){
+  return this.validate() && this.calculateResult()
+
+
+}
+     
 this.setState({
   resultText:this.state.resultText+text
 })
   }
-render() {
+render() {  
 let rows = []
 let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9,], [".", 0, "="]]
 for (let i = 0; i < 4; i++){
@@ -29,10 +81,10 @@ for (let j = 0; j < 3; j++){
   rows.push(<View style={styles.row}>{row}</View>
     )
 }
-let operations = ['+', '-', '*', '/']
 let ops = []
-for (let i = 0; i < 4; i++){
-  ops.push(<TouchableOpacity  style={styles.btn}><Text style={[styles.btntext,styles.white]}>{operations[i]}</Text></TouchableOpacity>
+for (let i = 0; i < 5; i++){
+  ops.push(
+  <TouchableOpacity  style={styles.btn} onPress={() =>this.operate(this.operations[i])}><Text style={[styles.btntext,styles.white]}>{this.operations[i]}</Text></TouchableOpacity>
   )
 }
 
@@ -42,7 +94,7 @@ return (
 <Text style = {styles.resultText}>{this.state.resultText}</Text>
   </View>
   <View style={styles.calculation}>
-  <Text style = {styles.calculationText}>121</Text>
+  <Text style = {styles.calculationText}>{this.state.calCtext}</Text>
   </View>
   <View style={styles.buttons}>
   <View style={styles.numbers}>
@@ -95,7 +147,9 @@ result: {
 },
 calculation:{
   flex:1,
-  backgroundColor:'green'
+  backgroundColor:'green',
+  alignItems:'flex-end',
+  justifyContent: 'center'
 },
 buttons:{
   flex:7,
