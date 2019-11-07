@@ -73,7 +73,7 @@ let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9,], [".", 0, "="]]
 for (let i = 0; i < 4; i++){
 let row  = []
 for (let j = 0; j < 3; j++){
-  row.push(<TouchableOpacity onPress={() => this.buttonPressed(nums[i][j])} style={styles.btn}><Text style={styles.btntext}>{nums[i][j]}</Text></TouchableOpacity>
+  row.push(<TouchableOpacity key = {nums[i][j]} onPress={() => this.buttonPressed(nums[i][j])} style={styles.btn}><Text style={styles.btntext}>{nums[i][j]}</Text></TouchableOpacity>
     )
 
 } 
@@ -84,7 +84,7 @@ for (let j = 0; j < 3; j++){
 let ops = []
 for (let i = 0; i < 5; i++){
   ops.push(
-  <TouchableOpacity  style={styles.btn} onPress={() =>this.operate(this.operations[i])}><Text style={[styles.btntext,styles.white]}>{this.operations[i]}</Text></TouchableOpacity>
+  <TouchableOpacity  style={styles.btn} key = {this.operations[i]} onPress={() =>this.operate(this.operations[i])}><Text style={[styles.btntext,styles.white]}>{this.operations[i]}</Text></TouchableOpacity>
   )
 }
 
@@ -114,7 +114,8 @@ container: {
   flex:1
 },
 btntext:{
-  fontSize:30 
+  fontSize:30 ,
+  color: '#79afa1'
 },
 btn:{
   flex:1,
@@ -127,11 +128,11 @@ white:{
 },
 resultText:{
   fontSize:30,
-  color:'white'
+  color:'#636363'
 },
 calculationText:{
-fontSize:24,
-color:'white'
+fontSize:26,
+color:'#83c3b3'
 },
 row:{
   flexDirection:'row',
@@ -141,13 +142,13 @@ row:{
 },
 result: {
   flex:2,
-  backgroundColor: 'red',
+  backgroundColor: '#f7f7f7',
   justifyContent:'center',
   alignItems:'flex-end'
 },
 calculation:{
   flex:1,
-  backgroundColor:'green',
+  backgroundColor:'#f7f7f7',
   alignItems:'flex-end',
   justifyContent: 'center'
 },
@@ -157,12 +158,12 @@ buttons:{
 },
 numbers:{
   flex:3,
-  backgroundColor:'yellow'
+  backgroundColor:'#e6e6e6'
 },
 operations:{
   flex:1,
   justifyContent:'space-around',
   alignItems:'stretch',
-  backgroundColor:'black'
+  backgroundColor:'#83c3b3'
 }
 })
