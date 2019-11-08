@@ -134,16 +134,18 @@ alignContent:"center"
 },
 btntext:{
   fontSize:30 ,
-  color: '#79afa1'
+  color: '#ed514e'
 },
 btn:{
   flex:1,
   alignItems:"center",
   alignSelf:"stretch",
-  justifyContent:"center"
+  justifyContent:"center",
+  borderColor:"#ed514e",
+  borderWidth:0.5
 },
 white:{
-  color:"white"
+  color:"white",
 },
 resultText:{
   fontSize:30,
@@ -151,7 +153,7 @@ resultText:{
 },
 calculationText:{
 fontSize:26,
-color:'#83c3b3'
+color:'#ed514e'
 },
 row:{
   flexDirection:'row',
@@ -173,16 +175,16 @@ calculation:{
 },
 buttons:{
   flex:7,
-  flexDirection:'row'
+  flexDirection:'row',
 },
 numbers:{
   flex:3,
-  backgroundColor:'#e6e6e6'
+  backgroundColor:'white'
 },
 operations:{
   flex:1,
   justifyContent:'space-around',
   alignItems:'stretch',
-  backgroundColor:'#83c3b3'
+  backgroundColor:'#ed514e'
 }
 })
